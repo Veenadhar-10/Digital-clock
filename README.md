@@ -29,34 +29,47 @@ A hardware design project implementing a digital clock with support for 12h/24h 
 - Simulates in both **12-hour and 24-hour** formats  
 - Tests alarm trigger and reset  
 - Tests stopwatch start, pause, and restart
-- #1 represent 1ms delay.
 
 
 ## 🔌 Interface Signals
 ### Top Module Inputs:
-clk: Main clock input
-reset: Global reset (active high pulse)
+-clk: Main clock input
+-reset: Global reset (active high pulse)
+-set: Time set control (active high pulse)
+-mode_12_24: 0 = 12-hour mode, 1 = 24-hour mode
+-alarm_enable: Alarm on/off control
+-alarm_set: Alarm time setting mode
+-a,b,c,d,e,f: Time setting inputs (BCD digits)
+### Top Module Outputs:
+-h1, h0: Hour digits
+-m1, m0: Minute digits
+-s1, s0: Second digits
+-am_pm: AM/PM indicator (12-hour mode only)
+-alarm_trigger: Alarm active signal
+-stopwatch_active: Stopwatch running indicator
 
-set: Time set control (active high pulse)
+## ⚙️ Operation Instructions
+### Time Setting:
+Apply desired time to input digits [a][b]:[c][d]:[e][f]
+Pulse set signal (0→1→0) to confirm
+### Reset Operation:
+Pulse reset signal (0→1→0) to reset time to 00:00:00
+### Alarm Setting:
+Enable alarm_set mode
+Input alarm time via digit inputs
+Pulse set to confirm
+Enable alarm with alarm_enable
+### Stopwatch Operation:
+Use dedicated controls for start, pause, and reset functions
+## 🔄 Simulation
+-The testbench (tb.sv) provides comprehensive verification:
+-Tests normal clock operation in both 12h and 24h modes
+-Verifies set and reset functionality
+-Tests alarm triggering at the correct time
+-Validates stopwatch operation with various control sequences
 
-mode_12_24: 0 = 12-hour mode, 1 = 24-hour mode
-
-alarm_enable: Alarm on/off control
-
-alarm_set: Alarm time setting mode
-
-a,b,c,d,e,f: Time setting inputs (BCD digits)
-
-Top Module Outputs:
-h1, h0: Hour digits
-
-m1, m0: Minute digits
-
-s1, s0: Second digits
-
-am_pm: AM/PM indicator (12-hour mode only)
-
-alarm_trigger: Alarm active signal
-
-stopwatch_active: Stopwatch running indicator
-
+## 📝 Notes
+All time values are represented in BCD format
+The design uses positive-edge triggered flip-flops throughout
+Input debouncing should be handled externally if needed
+The #1 delay in testbench represents 1ms simulation time
