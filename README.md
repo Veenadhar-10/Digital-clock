@@ -33,20 +33,20 @@ A hardware design project implementing a digital clock with support for 12h/24h 
 
 ## 🔌 Interface Signals
 ### Top Module Inputs:
--clk: Main clock input
--reset: Global reset (active high pulse)
--set: Time set control (active high pulse)
--mode_12_24: 0 = 12-hour mode, 1 = 24-hour mode
--alarm_enable: Alarm on/off control
--alarm_set: Alarm time setting mode
--a,b,c,d,e,f: Time setting inputs (BCD digits)
+- clk: Main clock input
+- reset: Global reset (active high pulse)
+- set: Time set control (active high pulse)
+- mode_12_24: 0 = 12-hour mode, 1 = 24-hour mode
+- alarm_enable: Alarm on/off control
+- alarm_set: Alarm time setting mode
+- a,b,c,d,e,f: Time setting inputs (BCD digits)
 ### Top Module Outputs:
--h1, h0: Hour digits
--m1, m0: Minute digits
--s1, s0: Second digits
--am_pm: AM/PM indicator (12-hour mode only)
--alarm_trigger: Alarm active signal
--stopwatch_active: Stopwatch running indicator
+- h1, h0: Hour digits
+- m1, m0: Minute digits
+- s1, s0: Second digits
+- am_pm: AM/PM indicator (12-hour mode only)
+- alarm_trigger: Alarm active signal
+- stopwatch_active: Stopwatch running indicator
 
 ## ⚙️ Operation Instructions
 ### Time Setting:
