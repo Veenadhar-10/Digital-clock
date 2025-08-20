@@ -50,26 +50,26 @@ A hardware design project implementing a digital clock with support for 12h/24h 
 
 ## ⚙️ Operation Instructions
 ### Time Setting:
-Apply desired time to input digits [a][b]:[c][d]:[e][f]
-Pulse set signal (0→1→0) to confirm
+- Apply desired time to input digits [a][b]:[c][d]:[e][f]
+- Pulse set signal (0→1→0) to confirm
 ### Reset Operation:
-Pulse reset signal (0→1→0) to reset time to 00:00:00
+- Pulse reset signal (0→1→0) to reset time to 00:00:00
 ### Alarm Setting:
-Enable alarm_set mode
-Input alarm time via digit inputs
-Pulse set to confirm
-Enable alarm with alarm_enable
+- Enable alarm_set mode
+- Input alarm time via digit inputs
+- Pulse set to confirm
+- Enable alarm with alarm_enable
 ### Stopwatch Operation:
-Use dedicated controls for start, pause, and reset functions
+- Use dedicated controls for start, pause, and reset functions
 ## 🔄 Simulation
--The testbench (tb.sv) provides comprehensive verification:
--Tests normal clock operation in both 12h and 24h modes
--Verifies set and reset functionality
--Tests alarm triggering at the correct time
--Validates stopwatch operation with various control sequences
+- The testbench (tb.sv) provides comprehensive verification:
+- Tests normal clock operation in both 12h and 24h modes
+- Verifies set and reset functionality
+- Tests alarm triggering at the correct time
+- Validates stopwatch operation with various control sequences
 
 ## 📝 Notes
-All time values are represented in BCD format
-The design uses positive-edge triggered flip-flops throughout
-Input debouncing should be handled externally if needed
-The #1 delay in testbench represents 1ms simulation time
+- All time values are represented in BCD format
+- The design uses positive-edge triggered flip-flops throughout
+- Input debouncing should be handled externally if needed
+- The #1 delay in testbench represents 1ms simulation time
